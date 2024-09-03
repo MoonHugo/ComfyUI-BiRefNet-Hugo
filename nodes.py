@@ -102,6 +102,8 @@ class BiRefNet_Hugo:
         rembg_list.insert(0, "Auto_DownLoad-ZhengPeng7/BiRefNet")
         rembg_list.insert(1, "Auto_DownLoad-ZhengPeng7/BiRefNet-DIS5K-TR_TEs")
         rembg_list.insert(2, "Auto_DownLoad-ZhengPeng7/BiRefNet-COD")
+        rembg_list.insert(3, "Auto_DownLoad-ZhengPeng7/BiRefNet-HRSOD")
+        rembg_list.insert(4, "Auto_DownLoad-ZhengPeng7/BiRefNet-portrait")
         return {
             "required": {
                 "model": (rembg_list, ),

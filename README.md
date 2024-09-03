@@ -50,6 +50,20 @@ ___
 
 Thanks to BiRefNet repo owner [ZhengPeng7/BiRefNet](https://github.com/zhengpeng7/birefnet)
 
+```
+library_name: birefnet
+tags:
+  - background-removal
+  - mask-generation
+  - Dichotomous Image Segmentation:二分图像分割(DIS)，指分割成前景与背景，二个集合，分割出高精度效果。
+  - Camouflaged Object Detection:伪装物体检测(COD)，偏工程向，旨在识别“无缝”嵌入到周围环境中的物体，例如野生动物保护、军事侦察或者工业自动化。
+  - Salient Object Detection:显著性目标检测(SOD)，自动检测图像中最具视觉吸引力的部分。
+  - pytorch_model_hub_mixin
+  - model_hub_mixin
+repo_url: https://github.com/ZhengPeng7/BiRefNet
+pipeline_tag: image-segmentation
+license: mit
+```
 部分代码参考了 [ZHO-ZHO-ZHO/ComfyUI-BiRefNet-ZHO](https://github.com/ZHO-ZHO-ZHO/ComfyUI-BiRefNet-ZHO) 感谢！
 
 Some of the code references [ZHO-ZHO-ZHO/ComfyUI-BiRefNet-ZHO](https://github.com/ZHO-ZHO-ZHO/ComfyUI-BiRefNet-ZHO) Thanks!
