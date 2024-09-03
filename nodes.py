@@ -108,7 +108,7 @@ class BiRefNet_Hugo:
                 # "model": (["Auto_Download"] + os.listdir(os.path.join(comfyui_models_dir, "rembg"))), 
                 "image": ("IMAGE",),
                 "background_color_name": (["transparency", "green", "white", "red", "yellow", "blue", "black"],{"default": "transparency"}), 
-                "background_color_code": ("STRING",{"default": "#00FF00"}), 
+                "background_color_code": ("STRING",{"default": "00ffdd"}), 
                 "background_color_mode": ("BOOLEAN", {"default": True, "label_on": "color_name", "label_off": "color_code"}), 
                 "device": (["auto", "cuda", "cpu", "mps", "xpu", "meta"],{"default": "auto"}), 
                 "dtype": (["auto","fp16","bf16","fp32", "fp8_e4m3fn", "fp8_e4m3fnuz", "fp8_e5m2", "fp8_e5m2fnuz"],{"default":"fp32"}),
