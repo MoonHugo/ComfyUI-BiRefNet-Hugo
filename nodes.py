@@ -97,6 +97,7 @@ def get_dtype_by_name(dtype):
 class BiRefNet_Hugo:
     def __init__(self):
         self.model = None
+        self.loaded_model_name = None
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -163,6 +164,9 @@ class BiRefNet_Hugo:
         device = get_device_by_name(device)
         dtype = get_dtype_by_name(dtype)
             
+        if self.loaded_model_name != model_name:
+            del self.model
+            self.model = None
         if self.model == None:
             self. model = AutoModelForImageSegmentation.from_pretrained(
                 model_path, 
@@ -205,6 +209,7 @@ class BiRefNet_Hugo:
         new_masks = torch.cat(processed_masks, dim=0)
         if cpu_offload == True:
             self.model.to("cpu")
+            self.loaded_model_name = model_name
         else:
             del self.model
             self.model = None
