@@ -49,7 +49,6 @@ ___
 感谢BiRefNet仓库的所有作者 [ZhengPeng7/BiRefNet](https://github.com/zhengpeng7/birefnet)
 
 Thanks to BiRefNet repo owner [ZhengPeng7/BiRefNet](https://github.com/zhengpeng7/birefnet)
-
 ```
 library_name: birefnet
 tags:

@@ -2,7 +2,7 @@ from transformers import AutoModelForImageSegmentation
 import torch
 from torchvision import transforms
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageColor
 import torch.nn.functional as F
 from .BiRefNet_node_config import Config
 import folder_paths
@@ -31,6 +31,8 @@ def resize_image(image):
     model_input_size = (1024, 1024)
     image = image.resize(model_input_size, Image.BILINEAR)
     return image
+
+colors = ["transparency", "green", "white", "red", "yellow", "blue", "black", "pink", "purple", "brown", "violet", "wheat", "whitesmoke", "yellowgreen", "turquoise", "tomato", "thistle", "teal", "tan", "steelblue", "springgreen", "snow", "slategrey", "slateblue", "skyblue", "orange"]
 
 def get_device_by_name(device):
     """
@@ -109,13 +111,15 @@ class BiRefNet_Hugo:
                 "model": (rembg_list, ),
                 # "model": (["Auto_Download"] + os.listdir(os.path.join(comfyui_models_dir, "rembg"))), 
                 "image": ("IMAGE",),
-                "background_color_name": (["transparency", "green", "white", "red", "yellow", "blue", "black"],{"default": "transparency"}), 
+                # "background_color_name": (["transparency", "green", "white", "red", "yellow", "blue", "black", "pink", "purple", "brown"],{"default": "transparency"}), 
+                "background_color_name": (colors,{"default": "transparency"}), 
                 "background_color_code": ("STRING",{"default": "00ffdd"}), 
                 "background_color_mode": ("BOOLEAN", {"default": True, "label_on": "color_name", "label_off": "color_code"}), 
                 "device": (["auto", "cuda", "cpu", "mps", "xpu", "meta"],{"default": "auto"}), 
                 "dtype": (["auto","fp16","bf16","fp32", "fp8_e4m3fn", "fp8_e4m3fnuz", "fp8_e5m2", "fp8_e5m2fnuz"],{"default":"fp32"}),
                 "cpu_offload": ("BOOLEAN", {"default": False, "label_on": "model_to_cpu", "label_off": "unload_model"}),
-                "Auto_Download_Path": ("BOOLEAN", {"default": False, "label_on": "rembg_local本地", "label_off": ".cache缓存"}),
+                "Auto_Download_Path": ("BOOLEAN", {"default": True, "label_on": "rembg_local本地", "label_off": ".cache缓存"}),
+                "Show_Colors_In_Ternimal": ("BOOLEAN", {"default": False, "label_on": "show", "label_off": "hide"}),
             }
         }
 
@@ -134,9 +138,13 @@ class BiRefNet_Hugo:
                           background_color_code,
                           background_color_mode,
                           Auto_Download_Path, 
+                          Show_Colors_In_Ternimal, 
                           ):
+        if Show_Colors_In_Ternimal:
+            for name, code in ImageColor.colormap.items():
+                print( f'{name:30} : {code}' )
         Config()
-        torch.set_float32_matmul_precision(["high", "highest"][0])
+        torch.set_float32_matmul_precision(["high", "highest"][1])
         processed_images = []
         processed_masks = []
         model_name = model.replace("Auto_DownLoad-", "")
@@ -184,7 +192,7 @@ class BiRefNet_Hugo:
                 color = background_color_name
                 mode = "RGB"
                 if not background_color_mode:
-                    color = "#" + background_color_code # 颜色码-绿色：#00FF00
+                    color = "#" + str(background_color_code).replace("#", "").replace(":", "").replace(" ", "") # 颜色码-绿色：#00FF00
             # new_im = Image.new("RGBA", pil_im.size, (0,0,0,0))
             new_im = Image.new(mode, pil_im.size, color)
             new_im.paste(orig_image, mask=pil_im)
