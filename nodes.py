@@ -120,7 +120,7 @@ class BiRefNet_Hugo:
                 "dtype": (["auto","fp16","bf16","fp32", "fp8_e4m3fn", "fp8_e4m3fnuz", "fp8_e5m2", "fp8_e5m2fnuz"],{"default":"fp32"}),
                 "cpu_offload": ("BOOLEAN", {"default": False, "label_on": "model_to_cpu", "label_off": "unload_model"}),
                 "Auto_Download_Path": ("BOOLEAN", {"default": True, "label_on": "rembg_local本地", "label_off": ".cache缓存"}),
-                "Show_Colors_In_Ternimal": ("BOOLEAN", {"default": False, "label_on": "show", "label_off": "hide"}),
+                "Show_Colors_In_Ternimal": ("BOOLEAN", {"default": False, "label_on": "yes", "label_off": "no"}),
             }
         }
 
@@ -164,7 +164,7 @@ class BiRefNet_Hugo:
         device = get_device_by_name(device)
         dtype = get_dtype_by_name(dtype)
             
-        if self.loaded_model_name != model_name:
+        if self.loaded_model_name != model:
             del self.model
             self.model = None
         if self.model == None:
@@ -209,7 +209,7 @@ class BiRefNet_Hugo:
         new_masks = torch.cat(processed_masks, dim=0)
         if cpu_offload == True:
             self.model.to("cpu")
-            self.loaded_model_name = model_name
+            self.loaded_model_name = model
         else:
             del self.model
             self.model = None
