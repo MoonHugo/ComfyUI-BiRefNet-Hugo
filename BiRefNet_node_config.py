@@ -2,7 +2,7 @@
 
 import os
 import math
-# from folder_paths import models_dir
+
 os.environ['HOME'] = os.path.expanduser("~")
 class Config():
     def __init__(self) -> None:
