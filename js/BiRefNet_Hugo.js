@@ -3,13 +3,11 @@ import { app } from "../../scripts/app.js";
 app.registerExtension({
     name: "BiRefNet_Hugo",
     async setup() {
-        console.log("BiRefNet_Hugo loaded");
-
-        function queue_button_pressed() {
-            console.log("Queue button was pressed!");
-        }
-
-        document.getElementById("queue-button").addEventListener("click", queue_button_pressed);
+        // console.log("BiRefNet_Hugo loaded");
+        // function queue_button_pressed() {
+        //     console.log("Queue button was pressed!");
+        // }
+        // document.getElementById("queue-button").addEventListener("click", queue_button_pressed);
     },
 
     async nodeCreated(node) {

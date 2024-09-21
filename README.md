@@ -26,11 +26,13 @@ The demo workflow placed in `ComfyUI-BiRefNet-Hugo/workflow`
 加载模型支持两种方式，一种是自动下载远程模型并加载模型，另外一种是加载本地模型。加载本地模型的时候需要把load_local_model设置为true，并把local_model_path设置为本地模型所在路径，例如：H:\ZhengPeng7\BiRefNet<br/>
 Loading the model supports two methods: one is to automatically download and load a remote model, and the other is to load a local model. When loading a local model, you need to set 'load_local_model' to true and 'local_model_path' to the path where the local model is located, for example: H:\ZhengPeng7\BiRefNet.
 
+![](./assets/9e6bf0f9-67a7-41ea-bc4b-d8352e4fac4a.png)
+
 ![](./assets/e21c32bf-ab98-444a-8055-54975ac47da3.png)
+
 
 模型下载地址：https://huggingface.co/ZhengPeng7/BiRefNet/tree/main<br/>
 Model download address: https://huggingface.co/ZhengPeng7/BiRefNet/tree/main
-
 
 ___
 工作流workflow.json的使用<br/>
