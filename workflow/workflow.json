@@ -3,158 +3,20 @@
   "last_link_id": 4,
   "nodes": [
     {
-      "id": 1,
-      "type": "BiRefNet_Hugo",
-      "pos": [
-        921,
-        256
-      ],
-      "size": {
-        "0": 210,
-        "1": 46
-      },
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 1,
-          "label": "image",
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "links": [
-            2
-          ],
-          "shape": 3,
-          "label": "image",
-          "slot_index": 0
-        },
-        {
-          "name": "mask",
-          "type": "MASK",
-          "links": [
-            3
-          ],
-          "shape": 3,
-          "label": "mask",
-          "slot_index": 1
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "BiRefNet_Hugo"
-      }
-    },
-    {
-      "id": 4,
-      "type": "MaskToImage",
-      "pos": [
-        922,
-        352
-      ],
-      "size": {
-        "0": 210,
-        "1": 26
-      },
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "mask",
-          "type": "MASK",
-          "link": 3,
-          "label": "遮罩"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            4
-          ],
-          "shape": 3,
-          "label": "图像",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "MaskToImage"
-      }
-    },
-    {
-      "id": 5,
-      "type": "PreviewImage",
-      "pos": [
-        1299,
-        410
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 4,
-          "label": "图像"
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "PreviewImage"
-      }
-    },
-    {
-      "id": 3,
-      "type": "PreviewImage",
-      "pos": [
-        1295,
-        74
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 2,
-          "label": "图像"
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "PreviewImage"
-      }
-    },
-    {
       "id": 2,
       "type": "LoadImage",
-      "pos": [
-        561,
-        254
-      ],
-      "size": [
-        315,
-        314
-      ],
+      "pos": {
+        "0": 561,
+        "1": 254
+      },
+      "size": {
+        "0": 315,
+        "1": 314
+      },
       "flags": {},
       "order": 0,
       "mode": 0,
+      "inputs": [],
       "outputs": [
         {
           "name": "IMAGE",
@@ -180,6 +42,152 @@
         "image.webp",
         "image"
       ]
+    },
+    {
+      "id": 3,
+      "type": "PreviewImage",
+      "pos": {
+        "0": 1312,
+        "1": 140
+      },
+      "size": [
+        410.6826949448018,
+        214.56675819839558
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 2,
+          "label": "图像"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 4,
+      "type": "MaskToImage",
+      "pos": {
+        "0": 933,
+        "1": 473
+      },
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 3,
+          "label": "遮罩"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "图像"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskToImage"
+      }
+    },
+    {
+      "id": 1,
+      "type": "BiRefNet_Hugo",
+      "pos": {
+        "0": 921,
+        "1": 256
+      },
+      "size": [
+        315.4826217026143,
+        143.56669716323933
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1,
+          "slot_index": 0,
+          "label": "图像"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            2
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "图像"
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            3
+          ],
+          "slot_index": 1,
+          "shape": 3,
+          "label": "遮罩"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BiRefNet_Hugo"
+      },
+      "widgets_values": [
+        false,
+        "transparency",
+        "auto"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "PreviewImage",
+      "pos": {
+        "0": 1316,
+        "1": 425
+      },
+      "size": [
+        430.8826461166768,
+        261.3667765089424
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 4,
+          "label": "图像"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
     }
   ],
   "links": [
@@ -220,10 +228,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.2100000000000002,
+      "scale": 1,
       "offset": [
-        -299.9616678351899,
-        94.8424540865177
+        -172.4824996323017,
+        67.43331809554974
       ]
     }
   },

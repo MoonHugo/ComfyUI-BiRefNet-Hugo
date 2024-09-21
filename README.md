@@ -22,6 +22,16 @@ ___
 
 示例工作流放置在`ComfyUI-BiRefNet-Hugo/workflow`中<br/>
 The demo workflow placed in `ComfyUI-BiRefNet-Hugo/workflow`
+
+加载模型支持两种方式，一种是自动下载远程模型并加载模型，另外一种是加载本地模型。加载本地模型的时候需要把load_local_model设置为true，并把local_model_path设置为本地模型所在路径，例如：H:\ZhengPeng7\BiRefNet<br/>
+Loading the model supports two methods: one is to automatically download and load a remote model, and the other is to load a local model. When loading a local model, you need to set 'load_local_model' to true and 'local_model_path' to the path where the local model is located, for example: H:\ZhengPeng7\BiRefNet.
+
+![](./assets/e21c32bf-ab98-444a-8055-54975ac47da3.png)
+
+模型下载地址：https://huggingface.co/ZhengPeng7/BiRefNet/tree/main<br/>
+Model download address: https://huggingface.co/ZhengPeng7/BiRefNet/tree/main
+
+
 ___
 工作流workflow.json的使用<br/>
 The use of workflow.json
@@ -41,6 +51,8 @@ ___
 
 ![](./assets/demo3.gif)
 
+![](./assets/demo4.gif)
+
 ## 社交账号 | Social Account Homepage
 - Bilibili：[我的B站主页](https://space.bilibili.com/1303099255)
 
@@ -49,20 +61,7 @@ ___
 感谢BiRefNet仓库的所有作者 [ZhengPeng7/BiRefNet](https://github.com/zhengpeng7/birefnet)
 
 Thanks to BiRefNet repo owner [ZhengPeng7/BiRefNet](https://github.com/zhengpeng7/birefnet)
-```
-library_name: birefnet
-tags:
-  - background-removal
-  - mask-generation
-  - Dichotomous Image Segmentation:二分图像分割(DIS)，指分割成前景与背景，二个集合，分割出高精度效果。
-  - Camouflaged Object Detection:伪装物体检测(COD)，偏工程向，旨在识别“无缝”嵌入到周围环境中的物体，例如野生动物保护、军事侦察或者工业自动化。
-  - Salient Object Detection:显著性目标检测(SOD)，自动检测图像中最具视觉吸引力的部分。
-  - pytorch_model_hub_mixin
-  - model_hub_mixin
-repo_url: https://github.com/ZhengPeng7/BiRefNet
-pipeline_tag: image-segmentation
-license: mit
-```
+
 部分代码参考了 [ZHO-ZHO-ZHO/ComfyUI-BiRefNet-ZHO](https://github.com/ZHO-ZHO-ZHO/ComfyUI-BiRefNet-ZHO) 感谢！
 
 Some of the code references [ZHO-ZHO-ZHO/ComfyUI-BiRefNet-ZHO](https://github.com/ZHO-ZHO-ZHO/ComfyUI-BiRefNet-ZHO) Thanks!

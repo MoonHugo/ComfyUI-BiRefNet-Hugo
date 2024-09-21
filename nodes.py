@@ -4,18 +4,10 @@ from torchvision import transforms
 import numpy as np
 from PIL import Image
 import torch.nn.functional as F
-from .BiRefNet_node_config import Config
 import comfy.model_management as mm
-
-Config()
+import os
 
 torch.set_float32_matmul_precision(["high", "highest"][0])
-
-birefnet = AutoModelForImageSegmentation.from_pretrained(
-    "ZhengPeng7/BiRefNet", trust_remote_code=True
-)
-
-
 
 transform_image = transforms.Compose(
     [
@@ -24,6 +16,11 @@ transform_image = transforms.Compose(
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
     ]
 )
+
+current_path  = os.getcwd()
+
+## ComfyUI portable standalone build for Windows 
+model_path = os.path.join(current_path, "ComfyUI"+os.sep+"models"+os.sep+"BiRefNet")
 
 def tensor2pil(image):
     return Image.fromarray(np.clip(255. * image.cpu().numpy().squeeze(), 0, 255).astype(np.uint8))
@@ -68,8 +65,12 @@ class BiRefNet_Hugo:
         return {
             "required": {
                 "image": ("IMAGE",),
+                "load_local_model": ("BOOLEAN", {"default": False}),
                 "background_color_name": (colors,{"default": "transparency"}), 
                 "device": (["auto", "cuda", "cpu", "mps", "xpu", "meta"],{"default": "auto"})
+            },
+            "optional": {
+                "local_model_path": ("STRING", {"default":model_path}),
             }
         }
 
@@ -80,13 +81,24 @@ class BiRefNet_Hugo:
   
     def background_remove(self, 
                           image, 
+                          load_local_model,
                           device, 
                           background_color_name, 
+                          *args, **kwargs
                           ):
         processed_images = []
         processed_masks = []
        
         device = get_device_by_name(device)
+        
+        if load_local_model:
+            local_model_path = kwargs.get("local_model_path", model_path)
+            birefnet = AutoModelForImageSegmentation.from_pretrained(local_model_path,trust_remote_code=True)
+        else:
+            birefnet = AutoModelForImageSegmentation.from_pretrained(
+                "ZhengPeng7/BiRefNet", trust_remote_code=True
+            )
+        
         birefnet.to(device)
         for image in image:
             orig_image = tensor2pil(image)
