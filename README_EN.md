@@ -1,7 +1,6 @@
-<strong><p align="center"><font size=5>ComfyUI-BiRefNet-Hugo</font></p>
-</strong>
+<div style="text-align: center; font-size: 24px; font-weight: bold;">ComfyUI-BiRefNet-Hugo</div>
 <p align="center">
-    <br> <font size=4>English | <a href="README.md">中文</a></font>
+    <br> <font size=5>English | <a href="README.md">中文</a></font>
 </p>
 
 ## Introduction
