@@ -1,7 +1,7 @@
-# ComfyUI-BiRefNet-Hugo
-
+<strong><p align="center"><font size=5>ComfyUI-BiRefNet-Hugo</font></p>
+</strong>
 <p align="center">
-    <br> 中文 | <a href="README_EN.md">English</a>
+    <br> <font size=4>中文 | <a href="README_EN.md">English</a></font>
 </p>
 
 ## 介绍
