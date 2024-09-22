@@ -1,6 +1,4 @@
-<div align="center">
-# ComfyUI-BiRefNet-Hugo
-</div>
+<h1 align="center">ComfyUI-BiRefNet-Hugo</h1>
 
 <p align="center">
     <br> <font size=5>English | <a href="README.md">中文</a></font>
