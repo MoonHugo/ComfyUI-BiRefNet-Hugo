@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-birefnet-hugo"
+description = "This repository wraps the latest BiRefNet model as ComfyUI nodes. Compared to the previous model, the latest model offers higher and better matting accuracy."
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = ["numpy", "timm"]
+
+[project.urls]
+Repository = "https://github.com/MoonHugo/ComfyUI-BiRefNet-Hugo"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-BiRefNet-Hugo"
+Icon = ""
