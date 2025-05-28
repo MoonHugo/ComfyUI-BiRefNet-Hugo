@@ -6,6 +6,7 @@ from PIL import Image
 import torch.nn.functional as F
 import comfy.model_management as mm
 import os
+from folder_paths import models_dir
 
 torch.set_float32_matmul_precision(["high", "highest"][0])
 
@@ -17,10 +18,7 @@ transform_image = transforms.Compose(
     ]
 )
 
-current_path  = os.getcwd()
-
-## ComfyUI portable standalone build for Windows 
-model_path = os.path.join(current_path, "ComfyUI"+os.sep+"models"+os.sep+"BiRefNet")
+model_path = os.path.join(models_dir, "BiRefNet_models")
 
 def tensor2pil(image):
     return Image.fromarray(np.clip(255. * image.cpu().numpy().squeeze(), 0, 255).astype(np.uint8))
@@ -71,7 +69,7 @@ class BiRefNet_Hugo:
                 "device": (["auto", "cuda", "cpu", "mps", "xpu", "meta"],{"default": "auto"})
             },
             "optional": {
-                "local_model_path": ("STRING", {"default":model_path}),
+                "local_model_path": ("STRING", {"default":os.path.join(model_path, "BiRefNet")}),
             }
         }
 
@@ -97,8 +95,18 @@ class BiRefNet_Hugo:
             local_model_path = kwargs.get("local_model_path", model_path)
             birefnet = AutoModelForImageSegmentation.from_pretrained(local_model_path,trust_remote_code=True)
         else:
+            model_name = model.rsplit('/', 1)[-1]
+            local_model_path = os.path.join(model_path, model_name)
+
+            if not os.path.exists(local_model_path):
+                print(f"Downloading BiRefNet model to: {local_model_path}")
+                from huggingface_hub import snapshot_download
+                snapshot_download(repo_id=model,
+                                local_dir=local_model_path,
+                                local_dir_use_symlinks=False)
+
             birefnet = AutoModelForImageSegmentation.from_pretrained(
-                model, trust_remote_code=True
+                local_model_path, trust_remote_code=True
             )
         
         birefnet.to(device)
